@@ -1,0 +1,56 @@
+export HADOOP_HOME=/home/hadoop/hadoop-2.9.1
+export HADOOP_INSTALL=$HADOOP_HOME
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export YARN_HOME=$HADOOP_HOME
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
+hive
+export HIVE_HOME=/home/hadoop/apache-hive-3.0.0-bin
+export PATH=$PATH:$HIVE_HOME/bin
+
+<property>
+    <!--指定hadoop运行时产生文件的存储路径-->
+    <name>hadoop.tmp.dir</name>
+    <value>file:/home/hadoop/tmp</value>
+    <description>A base for other temporary directories.</description>
+</property>
+<property>
+    <!--hdfs namenode的通信地址-->
+    <name>fs.defaultFS</name>
+    <value>hdfs://localhost:9000</value>
+</property>
+
+<property>
+    <!-- 指定HDFS存储数据的副本数目，默认情况下是3份-->
+    <name>dfs.replication</name>
+    <value>1</value>
+</property>
+<property>
+    <!-- name node 存放 name table 的目录 -->
+    <name>dfs.namenode.name.dir</name>
+    <value>file:/homehadoop/tmp/dfs/name</value>
+</property>
+<property>
+<!-- data node 存放数据 block 的目录 -->
+    <name>dfs.datanode.data.dir</name>
+    <value>file:/home/hadoop/tmp/dfs/data</value>
+</property>
+
+
+<property>
+    <!-- 指定HDFS存储数据的副本数目，默认情况下是3份-->
+    <name>dfs.replication</name>
+    <value>1</value>
+</property>
+<property>
+    <!-- namenode存放nametable的目录 -->
+    <name>dfs.namenode.name.dir</name>
+    <value>file:/home/ubantu/tmp/dfs/name</value>
+</property>
+<property>
+<!-- datanode存放数据block的目录 -->
+    <name>dfs.datanode.data.dir</name>
+    <value>file:/home/ubantu/tmp/dfs/data</value>
+</property>

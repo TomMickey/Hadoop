@@ -1,0 +1,14 @@
+PL/SQL导入工具
+SQLLOADER:它可以把一些以文本格式存放的数据顺利的导入到oracle数据库中,是一种在不同数据库之间进行数据迁移的非常方便而且通用的工具。
+sql loader使用例子:
+1.创建SQL*Loader输入数据所需要的文件
+控制文件：input.ctl，内容如下： 
+	load data						1、控制文件标识 
+	infile 'test.txt'				2、要输入的数据文件名为test.txt 
+	append into table test			3、向表test中追加记录 
+	fields terminated by X'09'		4、字段终止于X'09'，是一个制表符（TAB） 
+	(id,username,password,sj)		定义列对应顺序 
+a、insert，为缺省方式，在数据装载开始时要求表为空 
+b、append，在表中追加新记录 
+c、replace，删除旧记录，替换成新装载的记录 
+d、truncate，同上 
