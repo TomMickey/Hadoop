@@ -1,0 +1,135 @@
+建立用户
+useradd 用户名
+
+创建用户并指定用户主目录，如果此目录不存在，则同时使用-m选项，可以创建主目录
+useradd -d /use/sam -m sam 
+
+-g 用户组 指定用户所属的用户组。
+-G 用户组,用户组 指定用户所属的附加组。
+
+useradd -s /bin/sh -g group –G adm,root gem
+此命令新建了一个用户gem，该用户的登录Shell是 /bin/sh，它属于group用户组，
+同时又属于adm和root用户组，其中group用户组是其主组。
+
+常用的选项是 -r，它的作用是把用户的主目录一起删除。
+userdel -r sam 
+
+给用户设置密码
+passwd  用户名
+
+删除用户
+userdel 用户名
+
+创建组
+groupadd 组名
+
+修改组
+groupmod -n 新组名 旧组名
+
+删除组
+groupdel 组名
+
+查看所有的用户信息
+cat /etc/passwd
+
+用于查找某个用户
+cat /etc/passwd|grep 用户名
+
+查看所有组信息
+cat /etc/group
+
+用于查找某个用户组
+cat /etc/group|grep 组名
+
+查看当前登录用户的组内成员
+groups 
+
+查看test用户所在的组,以及组内成员
+groups test 
+
+查看当前登录用户名
+whoami 
+
+查询用户名为user1的所属组：
+id user1
+
+chown用法
+用来更改某个目录或文件的用户名和用户组的
+chown 用户名:组名 文件路径（可以是就对路径也可以是相对路径）
+例1：chown root:root /tmp/tmp1
+就是把tmp下的tmp1的用户名和用户组改成root和root（只修改了tmp1的属组）.
+例2：chown -R root:root /tmp/tmp1
+就是把tmp下的tmp1下的所有文件的属组都改成root和root。
+
+chmod用法
+用来修改某个目录或文件的访问权限。
+语法：chmod [who] [+ | - | =] [mode] 文件名
+
+磁盘管理命令:
+df：列出文件系统的整体磁盘使用量
+du：检查磁盘空间使用量
+fdisk：用于磁盘分区
+
+df命令参数功能：检查文件系统的磁盘空间占用情况。可以利用该命令来获取硬盘被占用了多少空间，
+目前还剩下多少空间等信息。
+
+df -a ：列出所有的文件系统，包括系统特有的 /proc 等文件系统；
+df -k ：以 KBytes 的容量显示各文件系统；
+df -m ：以 MBytes 的容量显示各文件系统；
+df -h ：以人们较易阅读的 GBytes, MBytes, KBytes 等格式自行显示；
+df -H ：以 M=1000K 取代 M=1024K 的进位方式；
+df -T ：显示文件系统类型, 连同该 partition 的 filesystem 名称 (例如 ext3) 也列出；
+df -i ：不用硬盘容量，而以 inode 的数量来显示  
+
+列出当前文件以及文件夹的大小
+du -sh *  
+
+从 '/' 开始进入根文件系统搜索文件和目录 
+find / -name file1 
+
+以容量大小为依据依次显示文件和目录的大小
+du -sk * | sort -rn  
+
+从最后一行开始反向查看一个文件的内容
+tac file1  
+
+查看一个长文件的内容
+more file1  
+
+查看一个文件的前两行
+head -2 file1    
+
+实时查看被添加到一个文件中的内容
+tail -f /var/log/messages  
+
+ps -ef|grep java
+
+使用root账户给work账户授予权限
+chown work /test/*  
+
+修改test文件夹下所有文件的所属组（group）为work
+chgrp work /test/* 
+
+查看某个端口是被哪个进程占用的：
+netstat -tunpl | grep 6379
+
+从一台主机拷贝到另一台主机
+scp  当前系统的文件目录  account@远程主机:目录
+
+清空一个文件中的内容
+truncate -s 0 文件名
+
+截取部分文件
+tail -f catalina.out > log20180704.txt
+查看正在执行的crontab,用命令crontab  -l ,这样就可以看到哪些任务一直在执行了
+
+创建目录，并给目录赋予权限
+mkdir -m 777 目录名
+
+输入重定向
+统计 users 文件的行数
+wc -l users
+
+awk -F '[: ]+' '/eth1/{print $3}'
+
+usermod -d /tmp test
