@@ -1,0 +1,5 @@
+sqoop基本操作:
+sqoop version sqoop版本
+sqoop list-databases --connect jdbc:mysql://localhost:3306 --username root --password 1234  列出数据库
+sqoop list-tables --connect jdbc:mysql://localhost:3306/mysql --username root --password 1234 列出数据库里的表
+sqoop import --connect jdbc:mysql://localhost:3306/hive --username root --password 1234 --table users --driver com.mysql.jdbc.Driver -m 1
