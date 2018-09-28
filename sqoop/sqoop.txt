@@ -3,3 +3,20 @@ sqoop version sqoop版本
 sqoop list-databases --connect jdbc:mysql://localhost:3306 --username root --password 1234  列出数据库
 sqoop list-tables --connect jdbc:mysql://localhost:3306/mysql --username root --password 1234 列出数据库里的表
 sqoop import --connect jdbc:mysql://localhost:3306/hive --username root --password 1234 --table users --driver com.mysql.jdbc.Driver -m 1
+sqoop import --connect jdbc:mysql://localhost:3306/hive --username root --password 1234 --table users --driver com.mysql.jdbc.Driver -m 1 --delete-target-dir --mapreduce-job-name mapreducename --columns "字段" 抽取特定字段的表数据到hadoop
+--where 查询条件  
+--query  查询语句
+导入没有主键的表---需要指定分割字段或者把切片设置为1
+--split-by 字段名  -或者 -m 1
+--fields-terminated-by  指定分隔符
+--null-non-string  替换null值
+--null-string 指定null的值
+--direct 
+sqoop eval --connect jdbc:mysql://localhost:3306/hive --username root --passowrd 1234 --query "select * from users"  会在控制台打印出数据,不会写到hadoop中
+
+--options-file的使用:
+
+从HDFS到MySql数据库:导出
+sqoop export --connect jdbc:mysql://localhost:3306/hive --username root --password 1234 --driver com/mysql.jdbc.Driver --table emp --export-dir /user/ubt/users/ -m 1
+
+
