@@ -1,0 +1,2 @@
+yarn application -kill 杀死job
+yarn application -list 列出job

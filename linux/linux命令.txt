@@ -1,6 +1,8 @@
 建立用户
 useradd 用户名
 
+sudo apt-get install openssh-server  安装ssh
+
 创建用户并指定用户主目录，如果此目录不存在，则同时使用-m选项，可以创建主目录
 useradd -d /use/sam -m sam 
 

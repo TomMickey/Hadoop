@@ -1,4 +1,8 @@
 sqoop基本操作:
+往hadoop中导入数据的几种方式:
+1.hive load命令  把txt文件导入到指定的表中  load data local inpath '/data2/USERS/hadoop_dfgx_A/zk/20180702-fs_xzzx/baseinfo/user.txt' into table users partition (city=上海);
+必须指定表，可以指定分区
+2.shell put命令
 sqoop version sqoop版本
 sqoop list-databases --connect jdbc:mysql://localhost:3306 --username root --password 1234  列出数据库
 sqoop list-tables --connect jdbc:mysql://localhost:3306/mysql --username root --password 1234 列出数据库里的表
@@ -14,9 +18,18 @@ sqoop import --connect jdbc:mysql://localhost:3306/hive --username root --passwo
 --direct 
 sqoop eval --connect jdbc:mysql://localhost:3306/hive --username root --passowrd 1234 --query "select * from users"  会在控制台打印出数据,不会写到hadoop中
 
---options-file的使用:
-
 从HDFS到MySql数据库:导出
 sqoop export --connect jdbc:mysql://localhost:3306/hive --username root --password 1234 --driver com/mysql.jdbc.Driver --table emp --export-dir /user/ubt/users/ -m 1
 
+sqoop help:
+sqoop version  显示sqoop版本
+sqoop import 从关系型数据库往hadoop导入数据
+sqoop export 从hadoop往关系型数据库导出数据
+sqoop list-databases 显示数据库
+sqoop list-tables 显示数据库中的表
+sqoop eval  查询数据库中的数据,并展示出来
 
+sqoop job的使用:
+sqoop job --create myjob 
+
+工作中使用:sqoop job + crontab 

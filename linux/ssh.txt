@@ -1,0 +1,7 @@
+安装SSH、配置SSH无密码登陆
+1.sudo apt-get install openssh-server
+2.ssh localhost
+3.exit  
+4.cd ~/.ssh/
+5.ssh-keygen -t rsa
+6.cat ./id_rsa.pub >> ./authorized_keys
