@@ -5,3 +5,4 @@
 5.git remote add origin git地址   关联git远程地址
 6.git pull --rebase origin master   代码合并
 7.git push -u origin master   推送到远程仓库
+8.测试
