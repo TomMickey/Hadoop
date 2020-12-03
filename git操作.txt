@@ -5,4 +5,17 @@
 5.git remote add origin git地址   关联git远程地址
 6.git pull --rebase origin master   代码合并
 7.git push -u origin master   推送到远程仓库
-8.测试
+8.git tag 显示出所有的tag
+9.查看某个版本系列的tag
+git tag -l 'v1.0.*'
+10.创建标签
+git tag -a v1.0.0 -m "内容：v1.0.0"
+11.查看标签的详情，可以看到你commit的内容
+git show v0.0.6
+12.推送标签
+git push origin v1.0.0
+13.删除标签
+删除本地
+git tag -d v1.0.0
+删除远程的
+git push origin :refs/tags/v1.0.0
